@@ -1,6 +1,8 @@
 <template>
   <div class="container">
     <div>
+      <h1>Connected</h1>
+      <p v-if="socket">{{ socket.connected }}</p>
       <logo />
       <h1 class="title">
         easter-trivia
@@ -26,10 +28,24 @@
 
 <script>
 import Logo from '~/components/Logo.vue'
+// import io from 'socket.io-client'
 
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      socket: null
+    }
+  },
+  mounted() {
+    this.socket = this.$nuxtSocket({
+      // name: 'home'
+    })
+
+    // this.socket = io()
+    // this.socket.on('news', () => console.log('news-client'))
   }
 }
 </script>
