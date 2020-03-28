@@ -6,7 +6,7 @@
         easter-trivia
       </h1>
       <h2 class="subtitle">
-        create a trivia app for the easter celebration
+        trivia for easter
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">

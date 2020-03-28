@@ -1,6 +1,6 @@
 # easter-trivia
 
-> create a trivia app for the easter celebration
+> trivia for easter
 
 ## Build Setup
 
