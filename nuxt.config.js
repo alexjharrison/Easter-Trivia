@@ -14,7 +14,19 @@ module.exports = {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap',
+        rel: 'stylesheet'
+      },
+      {
+        href:
+          'https://fonts.googleapis.com/css?family=Merienda+One&display=swap',
+        rel: 'stylesheet'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -23,11 +35,11 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/scss/custom.scss'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['./plugins/io-client'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -44,18 +56,8 @@ module.exports = {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    'nuxt-socket-io'
+    '@nuxtjs/dotenv'
   ],
-  io: {
-    sockets: [
-      {
-        name: 'home',
-        url: 'http://localhost:3000',
-        default: true
-      }
-    ]
-  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -64,6 +66,11 @@ module.exports = {
   /*
    ** Build configuration
    */
+  bootstrapVue: {
+    bootstrapCSS: false, // Or `css: false`
+    bootstrapVueCSS: false, // Or `bvCSS: false`
+    icons: true
+  },
   build: {
     /*
      ** You can extend webpack config here

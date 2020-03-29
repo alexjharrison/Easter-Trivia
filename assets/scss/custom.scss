@@ -1,0 +1,27 @@
+$theme-colors: () !default;
+$theme-colors: map-merge(
+  (
+    'primary': #ff8906,
+    'secondary': #f25f4c,
+    'tertiary': #e53170
+  ),
+  $theme-colors
+);
+
+@import 'bootstrap/scss/bootstrap.scss';
+@import 'bootstrap-vue/src/index.scss';
+
+div,
+html {
+  color: #fffffe;
+  background-color: #0f0e17;
+  font-family: Roboto, sans-serif;
+}
+
+h1 {
+  font-family: 'Merienda One', cursive;
+}
+
+.btn {
+  font-weight: 700;
+}

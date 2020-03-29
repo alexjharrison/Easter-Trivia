@@ -1,5 +1,5 @@
 <template>
   <div>
-    <nuxt class="p-4" />
+    <h1>Question</h1>
   </div>
 </template>

@@ -33,9 +33,6 @@ async function start() {
     badge: true
   })
 
-  io.on('connection', socket => {
-    socket.emit('news', { news: ['newsss'] })
-    console.log('server connected')
-  })
+  require('./io')(io)
 }
 start()
