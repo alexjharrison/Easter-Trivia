@@ -13,8 +13,8 @@ $theme-colors: map-merge(
 
 div,
 html {
+  // background-color: #0f0e17;
   color: #fffffe;
-  background-color: #0f0e17;
   font-family: Roboto, sans-serif;
 }
 
@@ -24,4 +24,8 @@ h1 {
 
 .btn {
   font-weight: 700;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
 }

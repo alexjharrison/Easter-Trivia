@@ -1,11 +1,14 @@
 module.exports = io => {
+  // gameData.players = [new Player('poop')]
   io.on('connection', socket => {
-    socket.emit('update', gameData)
     console.log('server connected')
+    socket.emit('update', gameData)
 
     socket.on('addTeam', name => {
-      const newPlayer = new Player(name)
-      gameData.players.push(newPlayer)
+      if (gameData.players.filter(team => team.name === name).length === 0) {
+        const newPlayer = new Player(name)
+        gameData.players.push(newPlayer)
+      }
       io.emit('update', gameData)
     })
 
@@ -16,8 +19,29 @@ module.exports = io => {
     })
 
     socket.on('startGame', () => {
+      if (gameData.players.length === 0) return
       gameData.isAskingQuestion = true
       gameData.hasStarted = true
+      io.emit('update', gameData)
+    })
+
+    socket.on('updateAnswer', ({ id, answer }) => {
+      gameData.players[id].answers[gameData.currentQuestion] = {
+        answer: [...answer],
+        isCorrect: null,
+        score: 0,
+        isSubmitted: false
+      }
+      io.emit('update', gameData)
+    })
+    socket.on('submitAnswer', id => {
+      gameData.players[id].answers[gameData.currentQuestion].isSubmitted = true
+      io.emit('update', gameData)
+    })
+    socket.on('scoreAnswer', ({ score, team }) => {
+      gameData.players[team.id].answers[gameData.currentQuestion].isCorrect =
+        score > 0
+      gameData.players[team.id].answers[gameData.currentQuestion].score = score
       io.emit('update', gameData)
     })
 
@@ -32,6 +56,10 @@ module.exports = io => {
         },
         players: []
       }
+      io.emit('update', gameData)
+    })
+
+    socket.on('fetch', () => {
       io.emit('update', gameData)
     })
   })
@@ -51,7 +79,7 @@ let gameData = {
 class Player {
   constructor(name) {
     this.name = name
-    this.answers = [{ answer: 'my answer', isCorrect: true, score: 23 }]
-    this.id = gameData.players.length
+    this.answers = []
+    this.id = [...gameData.players].length
   }
 }

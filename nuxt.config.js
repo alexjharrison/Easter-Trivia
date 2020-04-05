@@ -26,7 +26,8 @@ module.exports = {
           'https://fonts.googleapis.com/css?family=Merienda+One&display=swap',
         rel: 'stylesheet'
       }
-    ]
+    ],
+    script: [{ src: 'https://unpkg.com/thpace' }]
   },
   /*
    ** Customize the progress-bar color
@@ -39,7 +40,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['./plugins/io-client'],
+  plugins: ['./plugins/io-client', { src: './plugins/thpace', mode: 'client' }],
   /*
    ** Nuxt.js dev-modules
    */
