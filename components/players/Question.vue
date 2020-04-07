@@ -2,7 +2,8 @@
   <div class="row w-100">
     <div class="col align-self-center">
       <h1>Question #{{ this.$store.state.game.currentQuestion + 1 }}</h1>
-      <p>Category: {{ $store.getters.currentQuestion.category }}</p>
+      <p class="m-0">Category: {{ $store.getters.currentQuestion.category }}</p>
+      <question-points :question="$store.getters.currentQuestion" />
       <p class="pt-1">{{ question }}</p>
       <b-form @submit.prevent="handleSubmit">
         <b-input
@@ -33,7 +34,9 @@
 </template>
 
 <script>
+import QuestionPoints from './QuestionPoints'
 export default {
+  components: { QuestionPoints },
   props: {
     question: { type: String, default: '' },
     category: { type: String, default: '' },
