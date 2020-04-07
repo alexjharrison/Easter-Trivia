@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3><u>Players</u></h3>
-    <ul>
+    <ul class="list-unstyled">
       <li v-for="player in $store.state.game.players" :key="player.id">
         {{ player.name }}
       </li>

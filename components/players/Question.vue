@@ -1,8 +1,9 @@
 <template>
   <div class="row w-100">
-    <div class="col-7 align-self-center">
+    <div class="col align-self-center">
       <h1>Question #{{ this.$store.state.game.currentQuestion + 1 }}</h1>
-      <p class="pt-4">{{ question }}</p>
+      <p>Category: {{ $store.getters.currentQuestion.category }}</p>
+      <p class="pt-1">{{ question }}</p>
       <b-form @submit.prevent="handleSubmit">
         <b-input
           v-model="answer"

@@ -2,7 +2,7 @@
   <div>
     <set-name v-if="!$store.state.teamName" />
     <lobby v-else-if="!$store.state.game.hasStarted" />
-    <div v-else-if="isAnswering" class="d-flex min-vh-100">
+    <div v-else-if="isAnswering">
       <question v-bind="question" />
     </div>
     <answered v-else-if="!allTeamsAnswered" />

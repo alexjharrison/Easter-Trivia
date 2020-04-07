@@ -1,10 +1,9 @@
 <template>
   <div>
     <h1>Teams Answered</h1>
-    <ul>
+    <ul class="list-unstyled">
       <li v-for="(team, i) in teamsAnswersCurrentQuestion" :key="i">
-        <strong>{{ team.name }}</strong
-        >:
+        <strong>{{ team.name }}:</strong>
         <span :class="team.answer && team.answer.isSubmitted ? 'green' : 'red'">
           {{
             team.answer && team.answer.isSubmitted

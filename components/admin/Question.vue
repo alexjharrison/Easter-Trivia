@@ -2,6 +2,7 @@
   <div>
     <!-- <b-button size="sm" @click="socket.emit('reset')">Reset</b-button> -->
     <h1>Question #{{ $store.state.currentQuestion }}</h1>
+    <p>{{ $store.getters.currentQuestion }}</p>
     <question-box v-for="team in teams" :key="team.id" :team="team" />
     <b-button
       v-if="allQuestionsAnswered"

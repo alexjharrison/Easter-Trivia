@@ -13,8 +13,16 @@ module.exports = io => {
     })
 
     socket.on('nextQuestion', () => {
-      gameData.currentQuestion++
-      gameData.isAskingQuestion = true
+      const newRounds = [0, 5, 10, 11, 16]
+      if (
+        newRounds.includes(gameData.currentQuestion) &&
+        !gameData.hasRoundStarted
+      ) {
+        gameData.hasRoundStarted = true
+      } else {
+        gameData.currentQuestion++
+        gameData.isAskingQuestion = true
+      }
       io.emit('update', gameData)
     })
 
@@ -48,6 +56,7 @@ module.exports = io => {
     socket.on('reset', () => {
       gameData = {
         hasStarted: false,
+        hasRoundStarted: false,
         isAskingQuestion: false,
         currentQuestion: 0,
         song: {
@@ -67,6 +76,7 @@ module.exports = io => {
 
 let gameData = {
   hasStarted: false,
+  hasRoundStarted: false,
   isAskingQuestion: false,
   currentQuestion: 0,
   song: {

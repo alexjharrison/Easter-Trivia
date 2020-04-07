@@ -1,16 +1,56 @@
 <template>
-  <div class="position-relative min-vh-100">
-    <canvas id="canvas" class="position-absolute" />
-    <nuxt class="p-4" />
+  <div id="app" class="min-vh-100 text-center">
+    <h1 class="eggfont text-center pt-4 mb-0">Easter Trivia</h1>
+    <b-img width="200px" src="~assets/images/buns.png" alt="buns" />
+    <nuxt class="p-4 h-100" />
   </div>
 </template>
 
-<style lang="scss" scoped>
-canvas {
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
+<style lang="scss">
+@font-face {
+  font-family: 'eggfont';
+  src: url('/eggfont.ttf');
+}
+
+input {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.eggfont {
+  font-family: 'eggfont';
+  font-size: 100px;
+}
+
+#app {
+  background-image: radial-gradient(
+      circle at 52% 94%,
+      rgba(169, 169, 169, 0.04) 0%,
+      rgba(169, 169, 169, 0.04) 50%,
+      rgba(199, 199, 199, 0.04) 50%,
+      rgba(199, 199, 199, 0.04) 100%
+    ),
+    radial-gradient(
+      circle at 96% 98%,
+      rgba(61, 61, 61, 0.04) 0%,
+      rgba(61, 61, 61, 0.04) 50%,
+      rgba(201, 201, 201, 0.04) 50%,
+      rgba(201, 201, 201, 0.04) 100%
+    ),
+    radial-gradient(
+      circle at 93% 97%,
+      rgba(227, 227, 227, 0.04) 0%,
+      rgba(227, 227, 227, 0.04) 50%,
+      rgba(145, 145, 145, 0.04) 50%,
+      rgba(145, 145, 145, 0.04) 100%
+    ),
+    radial-gradient(
+      circle at 79% 52%,
+      rgba(245, 245, 245, 0.04) 0%,
+      rgba(245, 245, 245, 0.04) 50%,
+      rgba(86, 86, 86, 0.04) 50%,
+      rgba(86, 86, 86, 0.04) 100%
+    ),
+    linear-gradient(90deg, rgb(210, 9, 198), rgb(25, 38, 118));
 }
 </style>
