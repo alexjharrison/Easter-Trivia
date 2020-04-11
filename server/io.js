@@ -13,13 +13,15 @@ module.exports = io => {
     })
 
     socket.on('nextQuestion', () => {
-      const newRounds = [0, 5, 10, 11, 16]
-      if (
-        newRounds.includes(gameData.currentQuestion) &&
-        !gameData.hasRoundStarted
-      ) {
-        gameData.hasRoundStarted = true
-      } else if (gameData.currentQuestion === 21 && !gameData.hasRoundStarted) {
+      // const newRounds = [0, 5, 10, 11, 16]
+      // if (
+      //   newRounds.includes(gameData.currentQuestion) &&
+      //   !gameData.hasRoundStarted
+      // ) {
+      //   gameData.hasRoundStarted = true
+      // }
+      if (gameData.currentQuestion === 20) {
+        gameData.hasEnded = true
       } else {
         gameData.currentQuestion++
         gameData.isAskingQuestion = true

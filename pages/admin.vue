@@ -1,6 +1,7 @@
 <template>
   <div>
-    <login v-if="!$store.state.isAdmin" />
+    <game-over v-if="$store.state.game.hasEnded" />
+    <login v-else-if="!$store.state.isAdmin" />
     <start v-else-if="!$store.state.game.hasStarted" />
     <question v-else />
     <b-button
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+import GameOver from '@/components/players/GameOver'
 import Login from '@/components/admin/Login'
 import Question from '@/components/admin/Question'
 import Start from '@/components/admin/Start'
@@ -21,7 +23,8 @@ export default {
   components: {
     Login,
     Question,
-    Start
+    Start,
+    GameOver
   }
 }
 </script>

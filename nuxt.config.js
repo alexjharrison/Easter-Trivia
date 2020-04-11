@@ -29,6 +29,10 @@ module.exports = {
     ],
     script: [{ src: 'https://unpkg.com/thpace' }]
   },
+  server: {
+    host: '0.0.0.0',
+    port: 1987
+  },
   /*
    ** Customize the progress-bar color
    */

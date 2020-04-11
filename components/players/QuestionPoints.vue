@@ -16,7 +16,7 @@
       2 questions worth 2 points each
     </p>
     <p v-else-if="question.multi3">
-      {{ question.multi3 }} questions worth {{ question.multi3 }} points each
+      3 questions worth 3 points each
     </p>
     <div v-else-if="question.wager">
       <span
@@ -28,7 +28,7 @@
         class="wagerbox"
         type="number"
         required
-        @input="validate"
+        @change="validate"
       />
     </div>
   </div>

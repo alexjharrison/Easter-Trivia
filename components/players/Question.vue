@@ -22,6 +22,7 @@
             class="w-75 mb-2"
             :disabled="isAnswered"
             :autofocus="i === 0"
+            :required="i === 0"
           />
         </div>
         <b-button
@@ -93,10 +94,10 @@ export default {
     if (this.$store.getters.currentQuestion?.pickAPoint)
       this.pointToRemove = this.$store.getters.myTeam.pointValues[0]
     else if (this.$store.getters.currentQuestion?.wager) this.pointToRemove = 1
-    // this.socket.emit('updateAnswer', {
-    //   id: this.$store.getters.myId,
-    //   answer: []
-    // })
+    this.socket.emit('updateAnswer', {
+      id: this.$store.getters.myId,
+      answer: []
+    })
   },
   methods: {
     handleSubmit() {
