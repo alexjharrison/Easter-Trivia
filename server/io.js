@@ -19,6 +19,7 @@ module.exports = io => {
         !gameData.hasRoundStarted
       ) {
         gameData.hasRoundStarted = true
+      } else if (gameData.currentQuestion === 21 && !gameData.hasRoundStarted) {
       } else {
         gameData.currentQuestion++
         gameData.isAskingQuestion = true
@@ -57,19 +58,25 @@ module.exports = io => {
       io.emit('update', gameData)
     })
 
+    socket.on('endGame', () => {
+      gameData.hasEnded = true
+      io.emit('update', gameData)
+    })
+
     socket.on('reset', () => {
       gameData = {
         hasStarted: false,
+        hasEnded: false,
         hasRoundStarted: false,
         isAskingQuestion: false,
-        currentQuestion: 7,
+        currentQuestion: 0,
         song: {
           currentSong: null,
           isPlaying: false
         },
         players: []
       }
-      io.emit('update', gameData)
+      io.emit('reset', gameData)
     })
 
     socket.on('fetch', () => {
@@ -80,9 +87,10 @@ module.exports = io => {
 
 let gameData = {
   hasStarted: false,
+  hasEnded: false,
   hasRoundStarted: false,
   isAskingQuestion: false,
-  currentQuestion: 7,
+  currentQuestion: 0,
   song: {
     currentSong: null,
     isPlaying: false

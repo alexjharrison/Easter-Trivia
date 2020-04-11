@@ -16,11 +16,18 @@ export default {
       name: ''
     }
   },
+  mounted() {
+    const name = window.localStorage.getItem('name')
+    if (name) {
+      this.$store.commit('SET_TEAM_NAME', name)
+    }
+  },
   methods: {
     login() {
       if (!this.name) return
       this.$store.commit('SET_TEAM_NAME', this.name)
       this.socket.emit('addTeam', this.name)
+      window.localStorage.setItem('name', this.name)
     }
   }
 }

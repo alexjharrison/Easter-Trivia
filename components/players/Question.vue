@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       answers: new Array(this.$store.getters.numAnswers).map(() => ''),
-      pointToRemove: this.$store.getters.myTeam.pointValues[0]
+      pointToRemove: null
     }
   },
   computed: {
@@ -74,10 +74,7 @@ export default {
     pointToRemove(newPoint) {
       this.socket.emit('updateAnswer', {
         id: this.$store.getters.myId,
-        ...((this.$store.getters.currentQuestion.pickAPoint ||
-          this.$store.getters.currentQuestion.wager) && {
-          answer: [...this.answers, 'Points: ' + newPoint]
-        })
+        answer: [...this.answers, 'Points: ' + newPoint]
       })
     },
     answers: {
@@ -85,15 +82,26 @@ export default {
       handler(newVal) {
         this.socket.emit('updateAnswer', {
           id: this.$store.getters.myId,
-          answer: [...newVal, 'Points: ' + this.pointToRemove]
+          answer: this.pointToRemove
+            ? [...newVal, 'Points: ' + this.pointToRemove]
+            : newVal
         })
       }
     }
   },
+  mounted() {
+    if (this.$store.getters.currentQuestion?.pickAPoint)
+      this.pointToRemove = this.$store.getters.myTeam.pointValues[0]
+    else if (this.$store.getters.currentQuestion?.wager) this.pointToRemove = 1
+    // this.socket.emit('updateAnswer', {
+    //   id: this.$store.getters.myId,
+    //   answer: []
+    // })
+  },
   methods: {
     handleSubmit() {
       const payload = { id: this.$store.getters.myId }
-      if (this.$store.getters.currentQuestion.pickAPoint)
+      if (this.$store.getters.currentQuestion?.pickAPoint)
         payload.pointToRemove = this.pointToRemove
       this.socket.emit('submitAnswer', payload)
     },
@@ -108,6 +116,6 @@ export default {
 .img-fluid {
   max-width: 500px;
   max-height: 500px;
-  object-fit: cover;
+  object-fit: contain;
 }
 </style>

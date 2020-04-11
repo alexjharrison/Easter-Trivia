@@ -14,6 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.9.6",
     "@nuxtjs/dotenv": "^1.4.1",
+    "apexcharts": "^3.18.1",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.9.0",
     "cross-env": "^5.2.1",
@@ -22,6 +23,7 @@
     "nuxt-socket-io": "^1.0.21",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
+    "vue-apexcharts": "^1.5.3",
     "vue-socket.io": "^3.0.7"
   },
   "devDependencies": {

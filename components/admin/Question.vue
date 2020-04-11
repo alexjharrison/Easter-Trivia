@@ -19,13 +19,24 @@
       @click="socket.emit('nextQuestion')"
       >Next Question</b-button
     >
+    <!-- <b-button
+      v-if="$store.state.game.currentQuestion === questions.length - 1"
+      size="lg"
+      variant="primary"
+      @click="socket.emit('endGame')"
+      >End Game</b-button
+    > -->
   </div>
 </template>
 
 <script>
 import QuestionBox from './QuestionBox'
+import questions from '@/assets/data/questions'
 export default {
   components: { QuestionBox },
+  data() {
+    return { questions }
+  },
   computed: {
     teams() {
       return this.$store.state.game.players.map(({ id, answers, name }) => ({
@@ -37,7 +48,6 @@ export default {
     allQuestionsAnswered() {
       return this.$store.state.game.players.reduce(
         (isAnswered, { answers }) => {
-          console.log(answers[this.$store.state.game.currentQuestion])
           return (
             isAnswered &&
             answers[this.$store.state.game.currentQuestion]?.isCorrect !== null

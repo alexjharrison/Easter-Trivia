@@ -40,7 +40,10 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['./plugins/io-client', { src: './plugins/thpace', mode: 'client' }],
+  plugins: [
+    './plugins/io-client',
+    { src: './plugins/apex-charts', mode: 'client' }
+  ],
   /*
    ** Nuxt.js dev-modules
    */

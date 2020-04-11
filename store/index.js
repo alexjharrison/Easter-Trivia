@@ -22,7 +22,21 @@ export const getters = {
     game.players.map(({ name, answers }) => ({
       name,
       answer: answers[game.currentQuestion]
+    })),
+  formattedTeams: ({ game }) =>
+    game.players?.map(({ name, answers }) => ({
+      name,
+      scores: getScores(answers),
+      currentTotal: answers.reduce((acc, { score }) => acc + score, 0)
     }))
+}
+
+function getScores(answers) {
+  const currentTotal = answerSection =>
+    answerSection.reduce((acc, score) => acc + score, 0)
+  const scores = answers.map(({ score }) => score)
+  const output = scores.map((score, i) => currentTotal(scores.slice(0, i + 1)))
+  return output
 }
 
 export const mutations = {

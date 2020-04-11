@@ -1,23 +1,27 @@
 <template>
   <div>
-    <set-name v-if="!$store.state.teamName" />
-    <lobby v-else-if="!$store.state.game.hasStarted" />
-    <div v-else-if="isAnswering">
-      <question v-bind="question" />
+    <game-over v-if="$store.state.game.hasEnded" />
+    <div v-else>
+      <set-name v-if="!$store.state.teamName" />
+      <lobby v-else-if="!$store.state.game.hasStarted" />
+      <div v-else-if="isAnswering">
+        <question v-bind="question" />
+      </div>
+      <answered v-else-if="!allTeamsAnswered" />
+      <answer v-else />
     </div>
-    <answered v-else-if="!allTeamsAnswered" />
-    <answer v-else />
   </div>
 </template>
 
 <script>
+import GameOver from '@/components/players/GameOver'
 import SetName from '@/components/players/SetName'
 import Lobby from '@/components/players/Lobby'
 import Question from '@/components/players/Question'
 import Answer from '@/components/players/Answer'
 import Answered from '@/components/players/Answered'
 export default {
-  components: { SetName, Lobby, Question, Answer, Answered },
+  components: { SetName, Lobby, Question, Answer, Answered, GameOver },
   computed: {
     question() {
       return this.$store.getters.currentQuestion

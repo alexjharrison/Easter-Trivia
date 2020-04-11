@@ -6,5 +6,9 @@ export default function({ store }, inject) {
   socket.on('update', data => {
     store.commit('SET_GAME_DATA', data)
   })
+  socket.on('reset', data => {
+    window.localStorage.removeItem('name')
+    window.location.reload()
+  })
   Vue.prototype.socket = socket
 }

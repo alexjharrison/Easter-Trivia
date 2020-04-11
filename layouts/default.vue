@@ -1,9 +1,17 @@
 <template>
   <div id="app" class="min-vh-100 text-center">
-    <h1 class="eggfont text-center pt-4 mb-0">Easter Trivia</h1>
+    <header-points />
+    <h1 class="eggfont text-center mb-0">Easter Trivia</h1>
     <nuxt class="px-4 h-100 pb-5" />
   </div>
 </template>
+
+<script>
+import HeaderPoints from '@/components/HeaderPoints'
+export default {
+  components: { HeaderPoints }
+}
+</script>
 
 <style lang="scss">
 @font-face {
