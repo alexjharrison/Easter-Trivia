@@ -1,8 +1,7 @@
 <template>
   <div id="app" class="min-vh-100 text-center">
     <h1 class="eggfont text-center pt-4 mb-0">Easter Trivia</h1>
-    <b-img width="200px" src="~assets/images/buns.png" alt="buns" />
-    <nuxt class="p-4 h-100" />
+    <nuxt class="px-4 h-100" />
   </div>
 </template>
 

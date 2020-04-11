@@ -1,5 +1,6 @@
 <template>
   <div>
+    <b-img width="200px" src="~assets/images/buns.png" alt="buns" />
     <h1>Choose a Team Name</h1>
     <b-form @submit.prevent="login">
       <b-input v-model.trim="name" required class="w-auto mb-4" />

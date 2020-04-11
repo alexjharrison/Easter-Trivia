@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-2">
+  <div>
     <p v-if="question.points">
       {{ question.points }} Point{{ question.points > 1 ? 's' : '' }}
     </p>
