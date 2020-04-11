@@ -77,7 +77,7 @@ export default [
     question: `What South American country’s name comes from the latin word for silver?`,
     answers: [`Argentina`],
     pickAPoint: true,
-    qpic: `Q10.jpg`,
+    qpic: `Q10.png`,
     apic: `A10.gif`
   },
   {
