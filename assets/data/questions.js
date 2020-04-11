@@ -36,8 +36,8 @@ export default [
     question: `Factor the quadratic equation x2 + 3x - 4 into the format (x + ?)(x - ?)`,
     answers: [`(x + 4)(x - 1)`],
     points: 5,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q5.jpg`,
+    apic: `a5.PNG`
   },
 
   {
@@ -61,8 +61,8 @@ export default [
     question: `In Greek Mythology, what nymph was jilted by Narcissus, then pined away for him until nothing but her voice remained?`,
     answers: [`Echo`],
     pickAPoint: true,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q8.png`,
+    apic: `a8.png`
   },
   {
     category: `Technology`,
@@ -190,39 +190,39 @@ export default [
     question: `Which word from the Italian phrase for “forty days” originated during the 14th century to describe a method for dealing with the plague?`,
     answers: [`Quarantine`],
     wager: 3,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q17.jpg`,
+    apic: `a17.jpg`
   },
   {
     category: `Politically Incorrect`,
     question: `After 33 years without a Major League Baseball team, what city had to find a new name for their new team in 2005 because the name of their previous team had become too controversial?`,
     answers: [`Washington DC (Senators => Nationals)`],
     wager: 5,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q18.jpeg`,
+    apic: `a18.png`
   },
   {
     category: `Business`,
     question: `What kitchen appliance helped Nike co-founder Bill Bowerman revolutionize running shoes?`,
     answers: [`A waffle iron`],
     wager: 10,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q19.jpg`,
+    apic: `a19.jpg`
   },
   {
     category: `The 1%`,
     question: `Astronomer Tycho Brahe is estimated to have owned 1% of all the money in Denmark. This was enough to buy him a silver nose prosthetic, but not to save his pet from a tragic alcohol-fueled fall down the stairs.  What type of animal was this pet?`,
     answers: [`A Moose`],
     wager: 15,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q20.jpg`,
+    apic: `a20.jpg`
   },
   {
     category: `Actors`,
     question: `Which English actor, born Maurice Joseph Micklewhite Jr. in Rotherhithe, London, is one of two actors to be nominated for an Academy Award in every decade from the 60’s until the 2000’s`,
     answers: [`Michael Caine`],
     wager: 25,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q21.png`,
+    apic: `a21.png`
   }
 ]
