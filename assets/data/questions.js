@@ -138,28 +138,17 @@ export default [
     q1: `What was the political movement that grew out of the principles he used to govern that city?`,
     q2: `What is the name of the Italian politician most associated with that movement?`,
     answers: [`Fascism`, `Benito Amilcare Andrea Mussolini`],
-<<<<<<< HEAD
     multi: 2,
-    qpic: ` Q12.jpg`,
-    apic: ` a12.jpg`
-=======
-    multi2: true,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
->>>>>>> 48c34f6ef8224cdafd1c38829592618679d19801
+    qpic: `Q12.jpg`,
+    apic: `a12.jpg`
   },
   {
     category: `Astronomy`,
     question: `The two moons of Mars are named after the mythical twin sons of Ares, whose names translate to Panic and Terror.  What are the names of the moons?`,
     answers: [`Phobos`, `Deimos`],
     multi2: true,
-<<<<<<< HEAD
-    qpic: ` q13.jpg`,
-    apic: ` a13.jpg`
-=======
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
->>>>>>> 48c34f6ef8224cdafd1c38829592618679d19801
+    qpic: `q13.jpg`,
+    apic: `a13.jpg`
   },
   {
     category: `Music`,
@@ -177,34 +166,24 @@ export default [
       `Jessica`
     ],
     multi2: true,
-<<<<<<< HEAD
-    qpic: ` q14.png`,
-    apic: ` a14.png`
-=======
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
->>>>>>> 48c34f6ef8224cdafd1c38829592618679d19801
+    qpic: `q14.png`,
+    apic: `a14.png`
   },
   {
     category: `Geography`,
     question: `Which three East African countries border Lake Victoria?`,
     answers: [`Uganda`, `Kenya`, `Tanzania`],
     multi3: true,
-<<<<<<< HEAD
-    qpic: ` q15.jpg`,
-    apic: ` a15.gif`
-=======
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
->>>>>>> 48c34f6ef8224cdafd1c38829592618679d19801
+    qpic: `q15.jpg`,
+    apic: `a15.gif`
   },
   {
     category: `Presidents`,
     question: `All US presidents elected between 1800 to 1850 were members of one of 3 political parties.  What were those parties?`,
     answers: [`Democratic`, `Whig`, `Democratic-Republican`],
     multi3: true,
-    qpic: `tbd.jpg`,
-    apic: `tbd.jpg`
+    qpic: `q16.jpg`,
+    apic: `a16.jpg`
   },
   {
     category: `Etymology`,
