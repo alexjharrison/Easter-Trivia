@@ -20,7 +20,7 @@ export default [
     question: `Did Carole Baskin kill her first husband Don Lewis and feed him to her tigers?`,
     answers: [`¯\\_(ツ)_/¯`],
     points: 3,
-    qpic: `Q3.png`,
+    qpic: `Q3.PNG`,
     apic: `A3.gif`
   },
   {
@@ -107,7 +107,7 @@ export default [
       `Factorage`,
       `Forage`,
       `Garage`,
-      `Harbourage/Harborage`,
+      `Harbourage / Harborage`,
       `Lairage`,
       `Leverage`,
       `Lighterage`,
@@ -138,7 +138,7 @@ export default [
     q1: `What was the political movement that grew out of the principles he used to govern that city?`,
     q2: `What is the name of the Italian politician most associated with that movement?`,
     answers: [`Fascism`, `Benito Amilcare Andrea Mussolini`],
-    multi: 2,
+    multi2: true,
     qpic: `Q12.jpg`,
     apic: `a12.jpg`
   },
@@ -165,9 +165,9 @@ export default [
       `Mary`,
       `Jessica`
     ],
-    multi2: true,
+    multi3: true,
     qpic: `q14.png`,
-    apic: `a14.png`
+    apic: `a14.PNG`
   },
   {
     category: `Geography`,

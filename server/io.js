@@ -33,7 +33,7 @@ module.exports = io => {
       io.emit('update', gameData)
     })
 
-    socket.on('updateAnswer', ({ id, answer }) => {
+    socket.on('updateAnswer', ({ id, answer, pointToRemove }) => {
       gameData.players[id].answers[gameData.currentQuestion] = {
         answer: [...answer],
         isCorrect: null,
@@ -42,7 +42,11 @@ module.exports = io => {
       }
       io.emit('update', gameData)
     })
-    socket.on('submitAnswer', id => {
+    socket.on('submitAnswer', ({ id, pointToRemove }) => {
+      gameData.players[id].pointValues = gameData.players[
+        id
+      ].pointValues.filter(point => point !== pointToRemove)
+
       gameData.players[id].answers[gameData.currentQuestion].isSubmitted = true
       io.emit('update', gameData)
     })
@@ -58,7 +62,7 @@ module.exports = io => {
         hasStarted: false,
         hasRoundStarted: false,
         isAskingQuestion: false,
-        currentQuestion: 0,
+        currentQuestion: 7,
         song: {
           currentSong: null,
           isPlaying: false
@@ -78,7 +82,7 @@ let gameData = {
   hasStarted: false,
   hasRoundStarted: false,
   isAskingQuestion: false,
-  currentQuestion: 0,
+  currentQuestion: 7,
   song: {
     currentSong: null,
     isPlaying: false
@@ -91,5 +95,6 @@ class Player {
     this.name = name
     this.answers = []
     this.id = [...gameData.players].length
+    this.pointValues = [2, 4, 6, 8, 10]
   }
 }

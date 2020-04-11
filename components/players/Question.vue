@@ -6,18 +6,24 @@
         <p class="m-0 mr-4">
           Category: {{ $store.getters.currentQuestion.category }}
         </p>
-        <question-points :question="$store.getters.currentQuestion" />
+        <question-points
+          :question="$store.getters.currentQuestion"
+          @set-point="setPoint"
+        />
       </div>
       <p class="pt-1">{{ question }}</p>
       <b-form @submit.prevent="handleSubmit">
-        <b-input
-          v-for="(answer, i) in answers"
-          :key="i"
-          v-model="answers[i]"
-          class="w-75 mb-2"
-          :disabled="isAnswered"
-          autofocus
-        />
+        <div v-for="(answer, i) in answers" :key="i">
+          <p v-if="$store.getters.currentQuestion['q' + (i + 1)]">
+            {{ $store.getters.currentQuestion['q' + (i + 1)] }}
+          </p>
+          <b-input
+            v-model="answers[i]"
+            class="w-75 mb-2"
+            :disabled="isAnswered"
+            :autofocus="i === 0"
+          />
+        </div>
         <b-button
           type="submit"
           variant="primary"
@@ -32,7 +38,8 @@
     </div>
     <b-img
       v-if="picture"
-      class="col-5 align-self-center"
+      class="col p-4 mx-auto"
+      fluid
       :src="picture"
       :alt="question"
     />
@@ -46,36 +53,52 @@ export default {
   props: {
     question: { type: String, default: '' },
     category: { type: String, default: '' },
-    qpicture: { type: String, default: '' }
+    qpic: { type: String, default: '' }
   },
   data() {
     return {
-      answers: new Array(this.$store.getters.numAnswers).map(() => '')
+      answers: new Array(this.$store.getters.numAnswers).map(() => ''),
+      pointToRemove: this.$store.getters.myTeam.pointValues[0]
     }
   },
   computed: {
     picture() {
-      if (!this.qpicture) return null
-      return require(`@/assets/images/${this.qpicture}`)
+      if (!this.qpic) return null
+      return require(`@/assets/images/${this.qpic}`)
     },
     isAnswered() {
       return this.$store.getters.currentAnswer?.isSubmitted
     }
   },
   watch: {
+    pointToRemove(newPoint) {
+      this.socket.emit('updateAnswer', {
+        id: this.$store.getters.myId,
+        ...((this.$store.getters.currentQuestion.pickAPoint ||
+          this.$store.getters.currentQuestion.wager) && {
+          answer: [...this.answers, 'Points: ' + newPoint]
+        })
+      })
+    },
     answers: {
       deep: true,
       handler(newVal) {
         this.socket.emit('updateAnswer', {
           id: this.$store.getters.myId,
-          answer: newVal
+          answer: [...newVal, 'Points: ' + this.pointToRemove]
         })
       }
     }
   },
   methods: {
     handleSubmit() {
-      this.socket.emit('submitAnswer', this.$store.getters.myId)
+      const payload = { id: this.$store.getters.myId }
+      if (this.$store.getters.currentQuestion.pickAPoint)
+        payload.pointToRemove = this.pointToRemove
+      this.socket.emit('submitAnswer', payload)
+    },
+    setPoint(point) {
+      this.pointToRemove = point
     }
   }
 }
@@ -85,5 +108,6 @@ export default {
 .img-fluid {
   max-width: 500px;
   max-height: 500px;
+  object-fit: cover;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="d-flex justify-content-between mx-5 my-4 py-4 px-3 rounded box"
+    class="d-flex justify-content-between mx-auto my-4 py-4 px-3 rounded box"
     :class="isSubmittedClass"
   >
     <div>
