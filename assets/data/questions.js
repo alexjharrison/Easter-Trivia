@@ -182,7 +182,7 @@ export default [
     question: `All US presidents elected between 1800 to 1850 were members of one of 3 political parties.  What were those parties?`,
     answers: [`Democratic`, `Whig`, `Democratic-Republican`],
     multi3: true,
-    qpic: `q16.jpg`,
+    qpic: `q16.svg`,
     apic: `a16.jpg`
   },
   {
