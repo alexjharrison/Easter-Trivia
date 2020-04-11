@@ -80,7 +80,7 @@ export default [
     answers: [`Argentina`],
     pickAPoint: true,
     qpic: `Q10.jpg`,
-    apic: `tbd.jpg`
+    apic: `A10.gif`
   },
   {
     category: `Vocabulary`,
@@ -141,16 +141,16 @@ export default [
     q2: `What is the name of the Italian politician most associated with that movement?`,
     answers: [`Fascism`, `Benito Amilcare Andrea Mussolini`],
     multi: 2,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: ` Q12.jpg`,
+    apic: ` a12.jpg`
   },
   {
     category: `Astronomy`,
     question: `The two moons of Mars are named after the mythical twin sons of Ares, whose names translate to Panic and Terror.  What are the names of the moons?`,
     answers: [`Phobos`, `Deimos`],
     multi2: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: ` q13.jpg`,
+    apic: ` a13.jpg`
   },
   {
     category: `Music`,
@@ -168,16 +168,16 @@ export default [
       `Jessica`
     ],
     multi2: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: ` q14.png`,
+    apic: ` a14.png`
   },
   {
     category: `Geography`,
     question: `Which three East African countries border Lake Victoria?`,
     answers: [`Uganda`, `Kenya`, `Tanzania`],
     multi3: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: ` q15.jpg`,
+    apic: ` a15.gif`
   },
   {
     category: `Presidents`,
