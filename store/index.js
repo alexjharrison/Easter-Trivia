@@ -12,6 +12,12 @@ export const getters = {
   currentQuestion: ({ game: { currentQuestion } }) =>
     questions[currentQuestion],
   currentAnswer: ({ game }, { myAnswers }) => myAnswers?.[game.currentQuestion],
+  numAnswers: (state, { currentQuestion }) => {
+    if (currentQuestion.list) return 10
+    else if (currentQuestion.multi2) return 2
+    else if (currentQuestion.multi3) return 3
+    else return 1
+  },
   teamsAnswersCurrentQuestion: ({ game }) =>
     game.players.map(({ name, answers }) => ({
       name,

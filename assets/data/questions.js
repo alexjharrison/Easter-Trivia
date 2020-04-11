@@ -1,5 +1,3 @@
-import { BIconTypeBold, BIconArrow90degDown } from 'bootstrap-vue'
-
 export default [
   {
     category: `Food`,
@@ -72,7 +70,7 @@ export default [
     answers: [`Bell Labs`],
     pickAPoint: true,
     qpic: `Q9.jpg`,
-    apic: `BIconArrow90degDown.jpg`
+    apic: `A9.jpg`
   },
   {
     category: `Elements`,
@@ -140,17 +138,17 @@ export default [
     q1: `What was the political movement that grew out of the principles he used to govern that city?`,
     q2: `What is the name of the Italian politician most associated with that movement?`,
     answers: [`Fascism`, `Benito Amilcare Andrea Mussolini`],
-    multi: 2,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    multi2: true,
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Astronomy`,
     question: `The two moons of Mars are named after the mythical twin sons of Ares, whose names translate to Panic and Terror.  What are the names of the moons?`,
     answers: [`Phobos`, `Deimos`],
     multi2: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Music`,
@@ -168,63 +166,63 @@ export default [
       `Jessica`
     ],
     multi2: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Geography`,
     question: `Which three East African countries border Lake Victoria?`,
     answers: [`Uganda`, `Kenya`, `Tanzania`],
     multi3: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Presidents`,
     question: `All US presidents elected between 1800 to 1850 were members of one of 3 political parties.  What were those parties?`,
     answers: [`Democratic`, `Whig`, `Democratic-Republican`],
     multi3: true,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Etymology`,
     question: `Which word from the Italian phrase for “forty days” originated during the 14th century to describe a method for dealing with the plague?`,
     answers: [`Quarantine`],
     wager: 3,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Politically Incorrect`,
     question: `After 33 years without a Major League Baseball team, what city had to find a new name for their new team in 2005 because the name of their previous team had become too controversial?`,
     answers: [`Washington DC (Senators => Nationals)`],
     wager: 5,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Business`,
     question: `What kitchen appliance helped Nike co-founder Bill Bowerman revolutionize running shoes?`,
     answers: [`A waffle iron`],
     wager: 10,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `The 1%`,
     question: `Astronomer Tycho Brahe is estimated to have owned 1% of all the money in Denmark. This was enough to buy him a silver nose prosthetic, but not to save his pet from a tragic alcohol-fueled fall down the stairs.  What type of animal was this pet?`,
     answers: [`A Moose`],
     wager: 15,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   },
   {
     category: `Actors`,
     question: `Which English actor, born Maurice Joseph Micklewhite Jr. in Rotherhithe, London, is one of two actors to be nominated for an Academy Award in every decade from the 60’s until the 2000’s`,
     answers: [`Michael Caine`],
     wager: 25,
-    qpic: ` tbd.jpg`,
-    apic: ` tbd.jpg`
+    qpic: `tbd.jpg`,
+    apic: `tbd.jpg`
   }
 ]
