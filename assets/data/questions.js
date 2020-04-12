@@ -171,7 +171,7 @@ export default [
   },
   {
     category: `Geography`,
-    question: `Which three East African countries border Lake Victoria?`,
+    question: `Which three Eastern African countries border Lake Victoria?`,
     answers: [`Uganda`, `Kenya`, `Tanzania`],
     multi3: true,
     qpic: `q15.jpg`,
@@ -196,7 +196,7 @@ export default [
   {
     category: `Politically Incorrect`,
     question: `After 33 years without a Major League Baseball team, what city had to find a new name for their new team in 2005 because the name of their previous team had become too controversial?`,
-    answers: [`Washington DC (Senators => Nationals)`],
+    answers: [`Washington DC (Nationals, formerly the Senators)`],
     wager: 5,
     qpic: `q18.jpeg`,
     apic: `a18.png`
