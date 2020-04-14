@@ -6,6 +6,22 @@
       <b-input v-model.trim="name" required class="w-auto mb-4" />
       <b-button type="submit" variant="primary">Let's Play!</b-button>
     </b-form>
+    <div
+      v-if="
+        $store.getters.formattedTeams &&
+          $store.getters.formattedTeams.length > 0
+      "
+    >
+      <h3 class="mt-5">Join Existing Team</h3>
+      <b-button
+        v-for="(teamName, i) in teamNames"
+        :key="i"
+        variant="primary"
+        size="sm"
+        @click="joinTeam(teamName)"
+        >{{ teamName }}</b-button
+      >
+    </div>
   </div>
 </template>
 
@@ -14,6 +30,11 @@ export default {
   data() {
     return {
       name: ''
+    }
+  },
+  computed: {
+    teamNames() {
+      return this.$store.getters.formattedTeams.map(team => team.name)
     }
   },
   mounted() {
@@ -28,6 +49,10 @@ export default {
       this.$store.commit('SET_TEAM_NAME', this.name)
       this.socket.emit('addTeam', this.name)
       window.localStorage.setItem('name', this.name)
+    },
+    joinTeam(name) {
+      this.$store.commit('SET_TEAM_NAME', name)
+      window.localStorage.setItem('name', name)
     }
   }
 }

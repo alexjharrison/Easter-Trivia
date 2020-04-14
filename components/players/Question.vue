@@ -69,9 +69,21 @@ export default {
     },
     isAnswered() {
       return this.$store.getters.currentAnswer?.isSubmitted
+    },
+    myServerAnswers() {
+      return this.$store.getters.myAnswers[
+        this.$store.state.game.currentQuestion
+      ]?.answer
     }
   },
   watch: {
+    myServerAnswers(newVals) {
+      if (newVals && newVals.length > 0) {
+        for (let i = 0; i < this.answers.length; i++) {
+          this.answers[i] = newVals[i]
+        }
+      }
+    },
     pointToRemove(newPoint) {
       this.socket.emit('updateAnswer', {
         id: this.$store.getters.myId,
