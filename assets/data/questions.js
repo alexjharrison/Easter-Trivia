@@ -4,7 +4,7 @@ export default [
     question: `Where did Winnie the Pooh and his friends live?`,
     answers: [`100 acre wood`],
     points: 1,
-    qpic: `Q1.jpg`,
+    qpic: `q1.jpg`,
     apic: `A1.jpg`
   },
   {
@@ -12,7 +12,7 @@ export default [
     question: `A series of shark attacks at the Jersey Shore in 1916 were the inspiration for this 1975 blockbuster?`,
     answers: [`Jaws`],
     points: 2,
-    qpic: `Q2.jpg`,
+    qpic: `q2.jpg`,
     apic: `A2.gif`
   },
   {
@@ -20,7 +20,7 @@ export default [
     question: `This car company based in Maranello, Italy, is famous for its iconic red sports cars?`,
     answers: [`Ferrari`],
     points: 3,
-    qpic: `Q3.PNG`,
+    qpic: `q3.jpg`,
     apic: `A3.gif`
   },
   {
@@ -28,7 +28,7 @@ export default [
     question: `What is the name of the three-horned dinosaur in the background of this photo?`,
     answers: [`Triceratops`],
     points: 4,
-    qpic: `Q4.jpg`,
+    qpic: `q4.jpg`,
     apic: `A4.jpg`
   },
   {
@@ -45,7 +45,7 @@ export default [
     A) Smoke Point B) Flame Threshold  C) Oxidation Point D) Combustion Temperature E) Escape Velocity"`,
     answers: [`D) Combustion Temperature`],
     pickAPoint: true,
-    qpic: `Q6.jpg`,
+    qpic: `q6.jpg`,
     apic: `A6.jpg`
   },
   {
@@ -53,7 +53,7 @@ export default [
     question: `Lucie loves cooking this Class of shellfish whose name is derived from the latin words meaning "Two" and "Leaves of a door"?`,
     answers: [`Bivalve`],
     pickAPoint: true,
-    qpic: `q7.png`,
+    qpic: `q7.jpg`,
     apic: `a7.png`
   },
   {
@@ -61,7 +61,7 @@ export default [
     question: `Lucie is rushing to respond to a Code Red.  What does a Code Red signify?`,
     answers: [`Fire`],
     pickAPoint: true,
-    qpic: `Q8.jpg`,
+    qpic: `q8.jpg`,
     apic: `A8.jpg`
   },
   {
@@ -69,7 +69,7 @@ export default [
     question: `This comicbook superhero grew up in Kansas`,
     answers: [`Superman`],
     pickAPoint: true,
-    qpic: `Q9.png`,
+    qpic: `q9.jpg`,
     apic: `A9.gif`
   },
   {
@@ -77,7 +77,7 @@ export default [
     question: `What is the name of the spindle that holds the bottom thread in a sewing machine?`,
     answers: [`Bobbin`],
     pickAPoint: true,
-    qpic: `Q10.png`,
+    qpic: `q10.jpg`,
     apic: `A10.gif`
   },
   {
@@ -85,7 +85,7 @@ export default [
     question: `What are the 10 letters that aren't currently assigned to at least one active NYC Subway line?`,
     list: true,
     answers: [`H`, `I`, `K`, `O`, `P`, `T`, `U`, `V`, `X`, `Y`],
-    qpic: `Q11.gif`
+    qpic: `q11.jpgf`
   },
   {
     category: `History`,
@@ -93,7 +93,7 @@ export default [
     q2: `which was fought against this enemy`,
     answers: [`War of 1812`, `England / UK`],
     multi2: true,
-    qpic: `Q12.jpg`,
+    qpic: `q12.jpg`,
     apic: `a12.jpg`
   },
   {
@@ -110,7 +110,7 @@ export default [
     q2: `and which elements do the black and white balls represent?`,
     answers: [`Methane`, `Carbon`, `Hydrogen`],
     multi3: true,
-    qpic: `q14.png`,
+    qpic: `q14.jpg`,
     apic: `a14.PNG`
   },
   {
@@ -130,7 +130,7 @@ export default [
       `Baa Baa Black Sheep`
     ],
     multi3: true,
-    qpic: `q16.svg`,
+    qpic: `q16.jpg`,
     apic: `a16.jpg`
   },
   {
@@ -146,7 +146,7 @@ export default [
     question: `One time, Pops kept slamming the Planetarium door on Michael's head.  The planetarium show may have featured a constellation in the shape of an archer.  What is this constellation's name?`,
     answers: [`................`],
     wager: 5,
-    qpic: `q18.jpeg`,
+    qpic: `q18.png`,
     apic: `a18.png`
   },
   {
@@ -170,7 +170,7 @@ export default [
     question: `What is the most popular dog breed in the US?`,
     answers: [`Labrador Retriever`],
     wager: 25,
-    qpic: `q21.png`,
+    qpic: `q21.jpg`,
     apic: `a21.png`
   }
 ]
