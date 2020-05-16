@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="min-vh-100 text-center">
     <header-points />
-    <h1 class="eggfont text-center mb-0">Easter Trivia</h1>
+    <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
     <nuxt class="px-4 h-100 pb-5" />
   </div>
 </template>
