@@ -5,7 +5,7 @@ export default [
     answers: [`100 acre wood`],
     points: 1,
     qpic: `q1.jpg`,
-    apic: `A1.jpg`
+    apic: `a1.jpg`
   },
   {
     category: `Movies`,
@@ -13,7 +13,7 @@ export default [
     answers: [`Jaws`],
     points: 2,
     qpic: `q2.jpg`,
-    apic: `A2.gif`
+    apic: `a2.jpg`
   },
   {
     category: `Cars`,
@@ -21,7 +21,7 @@ export default [
     answers: [`Ferrari`],
     points: 3,
     qpic: `q3.jpg`,
-    apic: `A3.gif`
+    apic: `a3.jpg`
   },
   {
     category: `Dinosaurs`,
@@ -29,24 +29,24 @@ export default [
     answers: [`Triceratops`],
     points: 4,
     qpic: `q4.jpg`,
-    apic: `A4.jpg`
+    apic: `a4.jpg`
   },
   {
-    category: `TBD`,
-    question: `......`,
-    answers: [`..........`],
+    category: `Disney`,
+    question: `This Disney character only ate the tops of flowers`,
+    answers: [`Thumper`],
     points: 5,
     qpic: `q5.jpg`,
-    apic: `a5.PNG`
+    apic: `a5.jpg`
   },
   {
     category: `Science`,
-    question: `"Cash left in the oven for safe keeping will burst into flames whenever the oven gets hotter than the cash's ____.
-    A) Smoke Point B) Flame Threshold  C) Oxidation Point D) Combustion Temperature E) Escape Velocity"`,
+    question: `Cash left in the oven for safe keeping will burst into flames whenever the oven gets hotter than the cash's ____.
+    A) Smoke Point B) Flame Threshold  C) Oxidation Point D) Combustion Temperature E) Escape Velocity`,
     answers: [`D) Combustion Temperature`],
     pickAPoint: true,
     qpic: `q6.jpg`,
-    apic: `A6.jpg`
+    apic: `a6.jpg`
   },
   {
     category: `Sea Creatures`,
@@ -54,7 +54,7 @@ export default [
     answers: [`Bivalve`],
     pickAPoint: true,
     qpic: `q7.jpg`,
-    apic: `a7.png`
+    apic: `a7.jpg`
   },
   {
     category: `Codes`,
@@ -62,7 +62,7 @@ export default [
     answers: [`Fire`],
     pickAPoint: true,
     qpic: `q8.jpg`,
-    apic: `A8.jpg`
+    apic: `a8.jpg`
   },
   {
     category: `Comics`,
@@ -70,7 +70,7 @@ export default [
     answers: [`Superman`],
     pickAPoint: true,
     qpic: `q9.jpg`,
-    apic: `A9.gif`
+    apic: `a9.jpg`
   },
   {
     category: `Home Ec`,
@@ -78,14 +78,15 @@ export default [
     answers: [`Bobbin`],
     pickAPoint: true,
     qpic: `q10.jpg`,
-    apic: `A10.gif`
+    apic: `a10.jpg`
   },
   {
     category: `New York City`,
     question: `What are the 10 letters that aren't currently assigned to at least one active NYC Subway line?`,
     list: true,
     answers: [`H`, `I`, `K`, `O`, `P`, `T`, `U`, `V`, `X`, `Y`],
-    qpic: `q11.jpgf`
+    qpic: `q11.jpg`,
+    apic: `a11.jpg`
   },
   {
     category: `History`,
@@ -105,13 +106,13 @@ export default [
     apic: `a13.jpg`
   },
   {
-    category: `Music`,
+    category: `Chemistry`,
     q1: `This model represents a gas molecule present in cow farts.  What is the name of the gas molecule`,
     q2: `and which elements do the black and white balls represent?`,
     answers: [`Methane`, `Carbon`, `Hydrogen`],
     multi3: true,
     qpic: `q14.jpg`,
-    apic: `a14.PNG`
+    apic: `a14.jpg`
   },
   {
     category: `Food`,
@@ -119,7 +120,7 @@ export default [
     answers: [`Celery`, `Green Peppers`, `Onions`],
     multi3: true,
     qpic: `q15.jpg`,
-    apic: `a15.gif`
+    apic: `a15.jpg`
   },
   {
     category: `Nursery Rhymes`,
@@ -144,10 +145,10 @@ export default [
   {
     category: `Childhood Trauma`,
     question: `One time, Pops kept slamming the Planetarium door on Michael's head.  The planetarium show may have featured a constellation in the shape of an archer.  What is this constellation's name?`,
-    answers: [`................`],
+    answers: [`Sagittarius`],
     wager: 5,
     qpic: `q18.png`,
-    apic: `a18.png`
+    apic: `a18.jpg`
   },
   {
     category: `Literary Awards`,
@@ -159,7 +160,7 @@ export default [
   },
   {
     category: `Advertisements`,
-    question: `This animal was featured in an iconic 1995 advertising campaign.  What was the brand being advertised?`,
+    question: `The animal seen here was featured in an iconic 1995 advertising campaign.  What was the brand being advertised?`,
     answers: [`Budweiser Beer`],
     wager: 15,
     qpic: `q20.jpg`,
@@ -171,6 +172,6 @@ export default [
     answers: [`Labrador Retriever`],
     wager: 25,
     qpic: `q21.jpg`,
-    apic: `a21.png`
+    apic: `a21.jpg`
   }
 ]
