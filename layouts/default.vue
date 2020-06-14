@@ -1,5 +1,12 @@
 <template>
   <div id="app" class="min-vh-100 text-center">
+    <b-embed
+      type="iframe"
+      :src="`https://zipcall.io/join/${room}`"
+      width="100vw"
+      height="50vh"
+      allowfullscreen
+    ></b-embed>
     <header-points />
     <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
     <nuxt class="px-4 h-100 pb-5" />
@@ -9,7 +16,12 @@
 <script>
 import HeaderPoints from '@/components/HeaderPoints'
 export default {
-  components: { HeaderPoints }
+  components: { HeaderPoints },
+  data() {
+    return {
+      room: 'https://zipcall.io/join/ColdMonkey'
+    }
+  }
 }
 </script>
 
