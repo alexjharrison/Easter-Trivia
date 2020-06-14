@@ -1,7 +1,8 @@
 <template>
   <div id="app" class="text-center d-flex" :class="flexDirection">
     <iframe
-      :src="`https://zipcall.io/join/${room}`"
+      v-if="isIframeVisible"
+      src="https://eastertrivia.daily.co/main"
       :style="iframeStyle"
       allow="camera;microphone"
     />
@@ -19,6 +20,7 @@ export default {
   components: { HeaderPoints },
   data() {
     return {
+      isIframeVisible: true,
       room: 'HarrisonWhiteKarlovicTrivia',
       flexDirection: '',
       iframeStyle: {
