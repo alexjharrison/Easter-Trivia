@@ -20,7 +20,7 @@ export default {
   components: { HeaderPoints },
   data() {
     return {
-      isIframeVisible: true,
+      isIframeVisible: false,
       room: 'HarrisonWhiteKarlovicTrivia',
       flexDirection: '',
       iframeStyle: {
