@@ -18,15 +18,15 @@
 export default {
   data() {
     return {
-      password: 'poop'
+      password: ''
     }
   },
   mounted() {
-    this.login()
+    // this.login()
   },
   methods: {
     login() {
-      if (this.password === 'poop') {
+      if (this.password === '123') {
         this.$store.commit('SET_ADMIN')
       }
       this.password = ''

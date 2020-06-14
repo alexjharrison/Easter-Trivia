@@ -13,9 +13,24 @@
     </p>
     <question-box v-for="team in teams" :key="team.id" :team="team" />
     <hr />
-    <b-button class="my-4" @click="socket.emit('toggleBreakoutRoom')">{{
-      inBreakoutRoom ? 'Return from Breakout Rooms' : 'Go to Breakout Rooms'
-    }}</b-button>
+    <b-button
+      v-if="inBreakoutRoom"
+      class="my-4"
+      type="submit"
+      @click="socket.emit('endBreakoutRooms')"
+      >Return from Breakout Rooms</b-button
+    >
+    <b-form
+      v-else
+      class="d-flex align-items-center"
+      @submit.prevent="socket.emit('sendToBreakoutRooms', breakoutRoomTime)"
+    >
+      <b-button class="my-4 mr-2" type="submit"
+        >Enter Minutes In Breakout Room</b-button
+      >
+      <b-form-input v-model="breakoutRoomTime" type="number" />
+    </b-form>
+    <hr />
     <p>Go to room</p>
     <b-button @click="$store.commit('SET_ADMIN_ROOM', null)">Main</b-button>
     <b-button
@@ -49,7 +64,7 @@ import questions from '@/assets/data/questions'
 export default {
   components: { QuestionBox },
   data() {
-    return { questions }
+    return { questions, breakoutRoomTime: 3 }
   },
   computed: {
     teams() {

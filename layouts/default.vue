@@ -9,6 +9,9 @@
     <div class="mx-3">
       <header-points />
       <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
+      <h4 v-if="$store.state.game.breakoutRoomTimer">
+        Time left in breakout room: {{ chatCountdown }}
+      </h4>
       <nuxt class="px-4 h-100 pb-5 flex-grow-1" />
     </div>
   </div>
@@ -20,7 +23,6 @@ export default {
   components: { HeaderPoints },
   data() {
     return {
-      isIframeVisible: true,
       flexDirection: '',
       iframeStyle: {
         width: '',
@@ -46,6 +48,16 @@ export default {
     },
     visibleRoom() {
       return this.$store.state.isAdmin ? this.adminRoom : this.room
+    },
+    isIframeVisible() {
+      return this.$store.state.game.isShowingVideoChat
+    },
+    chatCountdown() {
+      if (!this.$store.state.game) return null
+      const { breakoutRoomTimer } = this.$store.state.game
+      const minutes = Math.floor(breakoutRoomTimer / 60)
+      const seconds = ('0' + (breakoutRoomTimer - minutes * 60)).slice(-2)
+      return minutes + ':' + seconds
     }
   },
   mounted() {

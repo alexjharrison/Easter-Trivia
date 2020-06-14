@@ -21,8 +21,28 @@ module.exports = io => {
       io.emit('update', gameData)
     })
 
-    socket.on('toggleBreakoutRoom', () => {
-      gameData.inBreakoutRoom = !gameData.inBreakoutRoom
+    socket.on('sendToBreakoutRooms', minutes => {
+      gameData.inBreakoutRoom = true
+      gameData.breakoutRoomTimer = minutes * 60
+      const interval = setInterval(() => {
+        gameData.breakoutRoomTimer--
+        if (gameData.breakoutRoomTimer < 0) {
+          clearInterval(interval)
+          gameData.inBreakoutRoom = false
+          gameData.breakoutRoomTimer = null
+        }
+        io.emit('update', gameData)
+      }, 1000)
+      io.emit('update', gameData)
+    })
+    socket.on('endBreakoutRooms', () => {
+      gameData.inBreakoutRoom = false
+      gameData.breakoutRoomTimer = null
+      io.emit('update', gameData)
+    })
+
+    socket.on('toggleVideoChat', () => {
+      gameData.isShowingVideoChat = !gameData.isShowingVideoChat
       io.emit('update', gameData)
     })
 
@@ -70,6 +90,8 @@ module.exports = io => {
         isAskingQuestion: false,
         currentQuestion: 0,
         inBreakoutRoom: false,
+        isShowingVideoChat: false,
+        breakoutRoomTimer: null,
         song: {
           currentSong: null,
           isPlaying: false
@@ -92,6 +114,8 @@ let gameData = {
   isAskingQuestion: false,
   currentQuestion: 0,
   inBreakoutRoom: false,
+  isShowingVideoChat: false,
+  breakoutRoomTimer: null,
   song: {
     currentSong: null,
     isPlaying: false
