@@ -1,6 +1,10 @@
 <template>
   <div id="app" class="text-center d-flex" :class="flexDirection">
-    <iframe :src="`https://zipcall.io/join/${room}`" :style="iframeStyle" />
+    <iframe
+      :src="`https://zipcall.io/join/${room}`"
+      :style="iframeStyle"
+      allow="camera;microphone"
+    />
     <div>
       <header-points />
       <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
