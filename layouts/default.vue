@@ -1,15 +1,11 @@
 <template>
-  <div id="app" class="min-vh-100 text-center">
-    <b-embed
-      type="iframe"
-      :src="`https://zipcall.io/join/${room}`"
-      width="100vw"
-      height="50vh"
-      allowfullscreen
-    ></b-embed>
-    <header-points />
-    <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
-    <nuxt class="px-4 h-100 pb-5" />
+  <div id="app" class="text-center d-flex" :class="flexDirection">
+    <iframe :src="`https://zipcall.io/join/${room}`" :style="iframeStyle" />
+    <div>
+      <header-points />
+      <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
+      <nuxt class="px-4 h-100 pb-5 flex-grow-1" />
+    </div>
   </div>
 </template>
 
@@ -19,7 +15,26 @@ export default {
   components: { HeaderPoints },
   data() {
     return {
-      room: 'https://zipcall.io/join/ColdMonkey'
+      room: 'HarrisonWhiteKarlovicTrivia',
+      flexDirection: '',
+      iframeStyle: {
+        width: '',
+        height: '',
+        border: 'none',
+        maxWidth: '630ox'
+      }
+    }
+  },
+  mounted() {
+    this.setDirection()
+    window.onresize = this.setDirection
+  },
+  methods: {
+    setDirection() {
+      const isRow = window.innerWidth > window.innerHeight
+      this.flexDirection = isRow ? 'flex-row' : 'flex-column'
+      this.iframeStyle.width = isRow ? '50vw' : '100vh'
+      this.iframeStyle.height = isRow ? '100vh' : '50vh'
     }
   }
 }
