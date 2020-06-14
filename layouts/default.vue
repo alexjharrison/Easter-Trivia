@@ -2,11 +2,11 @@
   <div id="app" class="text-center d-flex" :class="flexDirection">
     <iframe
       v-if="isIframeVisible"
-      src="https://eastertrivia.daily.co/main"
+      :src="`https://eastertrivia.daily.co/${visibleRoom}`"
       :style="iframeStyle"
       allow="camera;microphone"
     />
-    <div>
+    <div class="mx-3">
       <header-points />
       <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
       <nuxt class="px-4 h-100 pb-5 flex-grow-1" />
@@ -20,8 +20,7 @@ export default {
   components: { HeaderPoints },
   data() {
     return {
-      isIframeVisible: false,
-      room: 'HarrisonWhiteKarlovicTrivia',
+      isIframeVisible: true,
       flexDirection: '',
       iframeStyle: {
         width: '',
@@ -29,6 +28,24 @@ export default {
         border: 'none',
         maxWidth: '630ox'
       }
+    }
+  },
+  computed: {
+    room() {
+      if (
+        !this.$store.state.game ||
+        !this.$store.state.game.inBreakoutRoom ||
+        !this.$store.getters.myTeam
+      )
+        return 'main'
+      else return 'team-' + this.$store.getters.myTeam.id
+    },
+    adminRoom() {
+      if (this.$store.state.adminRoom === null) return 'main'
+      else return 'team-' + this.$store.state.adminRoom
+    },
+    visibleRoom() {
+      return this.$store.state.isAdmin ? this.adminRoom : this.room
     }
   },
   mounted() {
@@ -63,6 +80,7 @@ input {
 }
 
 #app {
+  min-height: 100vh;
   background-image: radial-gradient(
       circle at 52% 94%,
       rgba(169, 169, 169, 0.04) 0%,

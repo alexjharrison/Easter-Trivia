@@ -1,7 +1,6 @@
 module.exports = io => {
   // gameData.players = [new Player('poop')]
   io.on('connection', socket => {
-    console.log('server connected')
     socket.emit('update', gameData)
 
     socket.on('addTeam', name => {
@@ -13,19 +12,17 @@ module.exports = io => {
     })
 
     socket.on('nextQuestion', () => {
-      // const newRounds = [0, 5, 10, 11, 16]
-      // if (
-      //   newRounds.includes(gameData.currentQuestion) &&
-      //   !gameData.hasRoundStarted
-      // ) {
-      //   gameData.hasRoundStarted = true
-      // }
       if (gameData.currentQuestion === 20) {
         gameData.hasEnded = true
       } else {
         gameData.currentQuestion++
         gameData.isAskingQuestion = true
       }
+      io.emit('update', gameData)
+    })
+
+    socket.on('toggleBreakoutRoom', () => {
+      gameData.inBreakoutRoom = !gameData.inBreakoutRoom
       io.emit('update', gameData)
     })
 
@@ -72,6 +69,7 @@ module.exports = io => {
         hasRoundStarted: false,
         isAskingQuestion: false,
         currentQuestion: 0,
+        inBreakoutRoom: false,
         song: {
           currentSong: null,
           isPlaying: false
@@ -93,6 +91,7 @@ let gameData = {
   hasRoundStarted: false,
   isAskingQuestion: false,
   currentQuestion: 0,
+  inBreakoutRoom: false,
   song: {
     currentSong: null,
     isPlaying: false

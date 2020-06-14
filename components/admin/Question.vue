@@ -12,9 +12,23 @@
       </span>
     </p>
     <question-box v-for="team in teams" :key="team.id" :team="team" />
+    <hr />
+    <b-button class="my-4" @click="socket.emit('toggleBreakoutRoom')">{{
+      inBreakoutRoom ? 'Return from Breakout Rooms' : 'Go to Breakout Rooms'
+    }}</b-button>
+    <p>Go to room</p>
+    <b-button @click="$store.commit('SET_ADMIN_ROOM', null)">Main</b-button>
+    <b-button
+      v-for="team in $store.state.game.players"
+      :key="team.name"
+      @click="$store.commit('SET_ADMIN_ROOM', team.id)"
+      >{{ team.name }}</b-button
+    >
+    <hr />
     <b-button
       v-if="allQuestionsAnswered"
       size="lg"
+      class="my-4"
       variant="primary"
       @click="socket.emit('nextQuestion')"
       >Next Question</b-button
@@ -58,6 +72,9 @@ export default {
     },
     question() {
       return this.$store.getters.currentQuestion
+    },
+    inBreakoutRoom() {
+      return this.$store.state.game.inBreakoutRoom
     }
   },
 

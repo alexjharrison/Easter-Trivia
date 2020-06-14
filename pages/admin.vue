@@ -4,8 +4,9 @@
     <login v-else-if="!$store.state.isAdmin" />
     <start v-else-if="!$store.state.game.hasStarted" />
     <question v-else />
+    <hr />
     <b-button
-      class="mt-4"
+      class="mt-5"
       size="sm"
       variant="primary"
       @click="socket.emit('reset')"

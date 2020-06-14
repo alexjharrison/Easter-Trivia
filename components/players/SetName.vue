@@ -17,6 +17,7 @@
         v-for="(teamName, i) in teamNames"
         :key="i"
         variant="primary"
+        class="d-block text-center mx-auto mb-2"
         size="sm"
         @click="joinTeam(teamName)"
         >{{ teamName }}</b-button
@@ -39,9 +40,12 @@ export default {
   },
   mounted() {
     const name = window.localStorage.getItem('name')
-    if (name) {
-      this.$store.commit('SET_TEAM_NAME', name)
-    }
+    setTimeout(() => {
+      console.log(this.$store.state.game)
+      if (name && this.$store.state.game.hasStarted) {
+        this.$store.commit('SET_TEAM_NAME', name)
+      }
+    }, 500)
   },
   methods: {
     login() {

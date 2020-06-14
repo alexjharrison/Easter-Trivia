@@ -1,6 +1,11 @@
 import questions from '@/assets/data/questions'
 
-export const state = () => ({ teamName: null, game: {}, isAdmin: false })
+export const state = () => ({
+  teamName: null,
+  game: {},
+  isAdmin: false,
+  adminRoom: null
+})
 
 export const getters = {
   myTeam: ({ game, teamName }) =>
@@ -48,5 +53,8 @@ export const mutations = {
   },
   SET_GAME_DATA(state, data) {
     state.game = { ...data }
+  },
+  SET_ADMIN_ROOM(state, roomId) {
+    state.adminRoom = roomId
   }
 }
