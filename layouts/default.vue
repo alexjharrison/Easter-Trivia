@@ -6,7 +6,7 @@
       :style="iframeStyle"
       allow="camera;microphone"
     />
-    <div class="mx-3">
+    <div class="mx-auto">
       <header-points />
       <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
       <h4 v-if="$store.state.game.breakoutRoomTimer">

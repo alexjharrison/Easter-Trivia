@@ -6,13 +6,6 @@
     <question v-else />
     <hr />
     <b-button
-      class="mt-5"
-      size="sm"
-      variant="primary"
-      @click="socket.emit('reset')"
-      >reset</b-button
-    >
-    <b-button
       class="mt-5 ml-3"
       size="sm"
       variant="primary"
