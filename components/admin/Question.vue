@@ -60,13 +60,15 @@
 
 <script>
 import QuestionBox from './QuestionBox'
-import questions from '@/assets/data/questions'
 export default {
   components: { QuestionBox },
   data() {
-    return { questions, breakoutRoomTime: 3 }
+    return { breakoutRoomTime: 3 }
   },
   computed: {
+    questions() {
+      return this.$store.state.questions
+    },
     teams() {
       return this.$store.state.game.players.map(({ id, answers, name }) => ({
         id,

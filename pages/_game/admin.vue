@@ -26,6 +26,10 @@ export default {
     Question,
     Start,
     GameOver
+  },
+  async asyncData({ store, $axios, params }) {
+    const { questions } = await $axios.$get('/api/templates/' + params.game)
+    store.commit('SET_QUESTIONS', questions)
   }
 }
 </script>

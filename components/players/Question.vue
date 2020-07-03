@@ -38,10 +38,10 @@
       </p>
     </div>
     <b-img
-      v-if="picture"
+      v-if="qpic"
       class="col p-4 mx-auto"
       fluid
-      :src="picture"
+      :src="qpic"
       :alt="question"
     />
   </div>
@@ -63,10 +63,6 @@ export default {
     }
   },
   computed: {
-    picture() {
-      if (!this.qpic) return null
-      return require(`@/assets/images/${this.qpic}`)
-    },
     isAnswered() {
       return this.$store.getters.currentAnswer?.isSubmitted
     },

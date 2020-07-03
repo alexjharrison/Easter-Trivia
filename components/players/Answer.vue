@@ -20,10 +20,7 @@
 export default {
   computed: {
     src() {
-      const name = this.$store.getters.currentQuestion.apic
-      if (!name) return null
-      const img = require(`@/assets/images/${name}`)
-      return img
+      return this.$store.getters.currentQuestion.apic
     }
   }
 }

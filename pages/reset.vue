@@ -8,7 +8,7 @@
 export default {
   methods: {
     reset() {
-      this.$router.push('/admin')
+      this.$router.push('/')
       setTimeout(() => {
         this.socket.emit('reset')
       }, 100)

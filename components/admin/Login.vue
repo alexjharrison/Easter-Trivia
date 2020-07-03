@@ -18,11 +18,11 @@
 export default {
   data() {
     return {
-      password: ''
+      password: '123'
     }
   },
   mounted() {
-    // this.login()
+    this.login()
   },
   methods: {
     login() {

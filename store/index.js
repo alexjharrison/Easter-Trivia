@@ -1,10 +1,11 @@
-import questions from '@/assets/data/questions'
+// import questions from '@/assets/data/questions'
 
 export const state = () => ({
   teamName: null,
   game: {},
   isAdmin: false,
-  adminRoom: null
+  adminRoom: null,
+  questions: null
 })
 
 export const getters = {
@@ -14,7 +15,7 @@ export const getters = {
   myAnswers: (state, { myTeam }) => myTeam?.answers,
   myScore: (state, { myAnswers }) =>
     myAnswers?.reduce((total, { score }) => total + score, 0),
-  currentQuestion: ({ game: { currentQuestion } }) =>
+  currentQuestion: ({ game: { currentQuestion }, questions }) =>
     questions[currentQuestion],
   currentAnswer: ({ game }, { myAnswers }) => myAnswers?.[game.currentQuestion],
   numAnswers: (state, { currentQuestion }) => {
@@ -45,6 +46,9 @@ function getScores(answers) {
 }
 
 export const mutations = {
+  SET_QUESTIONS(state, questions) {
+    state.questions = [...questions]
+  },
   SET_ADMIN(state) {
     state.isAdmin = true
   },
