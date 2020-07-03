@@ -33,6 +33,7 @@ module.exports = {
     host: '0.0.0.0',
     port: 1987
   },
+  telemetry: false,
   /*
    ** Customize the progress-bar color
    */
@@ -83,6 +84,9 @@ module.exports = {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {},
+    babel: {
+      plugins: ['@babel/plugin-proposal-optional-chaining']
+    }
   }
 }

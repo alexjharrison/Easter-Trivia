@@ -1,51 +1,52 @@
-const crypto = require('crypto')
 const path = require('path')
 const fs = require('fs-extra')
 const router = require('express').Router()
-const multer = require('multer')
+const upload = require('../config/multer')
+const addHash = require('../services/add-hash.js')
+const processImage = require('../services/process-image')
 
-const upload = multer({
-  storage: multer.diskStorage({
-    destination(req, file, cb) {
-      req.hash = generateHash()
-      const folderName = path.resolve(
-        __dirname,
-        '../../static/games/' + req.hash
-      )
-      fs.ensureDir(folderName, () => cb(null, folderName))
-    },
-    filename(req, file, cb) {
-      cb(null, file.originalname)
-    }
-  })
-})
-// const jimp = require('jimp')
-
-const gamesFolder = path.join(__dirname, '../../assets/games')
+const gamesFolder = path.join(__dirname, '../../assets/games/')
 
 router.get('/', (req, res) => {
   fs.readdir(gamesFolder, (err, files) => {
     if (err) res.send(err)
-    res.send(files.map(name => Number(name.split('.json')[0])))
+    res.send(files.map(name => name.split('.json')[0]))
   })
 })
 
-const fields = new Array(21).fill(null).map((val, i) => ({
-  name: 'q' + (i + 1),
-  maxCount: 1
-}))
-
-router.post('/', upload.fields(fields), (req, res) => {
-  //   const { title } = req.body
-  console.log(req.files.q1)
-  res.send('yo')
+router.get('/:gameHash', async (req, res) => {
+  try {
+    const dataPath = path.join(
+      __dirname,
+      '../../assets/games/' + req.params.gameHash + '.json'
+    )
+    const game = await fs.readJSON(dataPath)
+    res.json(game)
+  } catch (err) {
+    res.sendStatus(404)
+  }
 })
 
-function generateHash() {
-  return crypto
-    .createHash('md5')
-    .update(String(Math.random()))
-    .digest('hex')
-}
+router.use('/', addHash)
+router.use('/', upload.any(), processImage)
+router.post('/', (req, res) => {
+  const data = { hash: req.hash, questions: [] }
+  for (let i = 1; i <= 21; i++) {
+    const qfile = req.files.find(file => file.fieldname === 'qpic' + i)
+    const afile = req.files.find(file => file.fieldname === 'apic' + i)
+    data.questions.push({
+      ...req.body['q' + i],
+      qpic: qfile?.newFilepath,
+      apic: afile?.newFilepath
+    })
+    console.log(qfile, afile)
+  }
+  fs.writeFile(
+    gamesFolder + req.hash + '.json',
+    JSON.stringify(data),
+    'utf8',
+    () => res.json(data)
+  )
+})
 
 module.exports = router
