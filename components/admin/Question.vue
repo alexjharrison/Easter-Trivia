@@ -25,10 +25,16 @@
       class="d-flex align-items-center"
       @submit.prevent="socket.emit('sendToBreakoutRooms', breakoutRoomTime)"
     >
-      <b-button class="my-4 mr-2" type="submit"
-        >Enter Minutes In Breakout Room</b-button
-      >
-      <b-form-input v-model="breakoutRoomTime" type="number" />
+      <b-button class="my-4 mr-2" type="submit">Enter Breakout Room</b-button>
+      <div>
+        <label for="breakout-room-minutes">Minutes in Breakout room</label>
+        <b-form-input
+          id="breakout-room-minutes"
+          v-model="breakoutRoomTime"
+          type="number"
+          class="w-auto"
+        />
+      </div>
     </b-form>
     <hr />
     <p>Go to room</p>
