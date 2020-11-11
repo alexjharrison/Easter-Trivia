@@ -13,16 +13,25 @@
       </ul>
     </div>
     <div v-if="team.answer" class="align-self-center">
-      <p v-if="team.answer.isCorrect !== null">
-        Score: {{ team.answer.score }}
-      </p>
-      <b-form
-        v-else-if="team.answer.isSubmitted"
-        @submit.prevent="
-          Number.isInteger(score) && socket.emit('scoreAnswer', { score, team })
-        "
-      >
-        <label for="score">Enter Score:</label>
+      <p v-if="wasScored">Score: {{ team.answer.score }}</p>
+      <b-form v-else-if="team.answer.isSubmitted" @submit.prevent="saveScore">
+        <b-button
+          variant="success"
+          @click="
+            $emit('answered', { id: team.id, score: correctPoints })
+            wasScored = true
+          "
+          >Correct</b-button
+        >
+        <b-button
+          variant="danger"
+          @click="
+            $emit('answered', { id: team.id, score: incorrectPoints })
+            wasScored = true
+          "
+          >Wrong</b-button
+        >
+        <!-- <label for="score">Enter Score:</label>
         <b-input
           v-model.number="score"
           class="mb-2"
@@ -30,7 +39,7 @@
           placeholder="score"
           autofocus
         />
-        <b-button type="submit" size="sm" variant="primary">Submit</b-button>
+        <b-button type="submit" size="sm" variant="primary">Submit</b-button> -->
       </b-form>
     </div>
   </div>
@@ -43,7 +52,8 @@ export default {
   },
   data() {
     return {
-      score: null
+      score: null,
+      wasScored: false
     }
   },
   computed: {
@@ -51,6 +61,14 @@ export default {
       if (!this.team.answer) return ''
       else if (this.team.answer.isSubmitted) return 'submitted'
       else return 'done'
+    },
+    correctPoints() {
+      return this.team.answer.score
+    },
+    incorrectPoints() {
+      return this.$store.state.game.currentQuestion > 15
+        ? -this.team.answer.score
+        : 0
     }
   }
 }

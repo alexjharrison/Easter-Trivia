@@ -11,7 +11,25 @@
         >{{ answer }},
       </span>
     </p>
-    <question-box v-for="team in teams" :key="team.id" :team="team" />
+    <question-box
+      v-for="team in teams"
+      :key="team.id"
+      :team="team"
+      @answered="recordScore"
+    />
+    <div v-if="allQuestionsAnswered">
+      <hr />
+      <b-button
+        size="lg"
+        class="my-4"
+        variant="primary"
+        @click="
+          saveScores()
+          socket.emit('nextQuestion')
+        "
+        >Next Question</b-button
+      >
+    </div>
     <hr />
     <b-button
       v-if="inBreakoutRoom"
@@ -45,15 +63,6 @@
       @click="$store.commit('SET_ADMIN_ROOM', team.id)"
       >{{ team.name }}</b-button
     >
-    <hr />
-    <b-button
-      v-if="allQuestionsAnswered"
-      size="lg"
-      class="my-4"
-      variant="primary"
-      @click="socket.emit('nextQuestion')"
-      >Next Question</b-button
-    >
     <!-- <b-button
       v-if="$store.state.game.currentQuestion === questions.length - 1"
       size="lg"
@@ -69,7 +78,10 @@ import QuestionBox from './QuestionBox'
 export default {
   components: { QuestionBox },
   data() {
-    return { breakoutRoomTime: 3 }
+    return {
+      breakoutRoomTime: 3,
+      teamScores: null
+    }
   },
   computed: {
     questions() {
@@ -83,15 +95,17 @@ export default {
       }))
     },
     allQuestionsAnswered() {
-      return this.$store.state.game.players.reduce(
-        (isAnswered, { answers }) => {
-          return (
-            isAnswered &&
-            answers[this.$store.state.game.currentQuestion]?.isCorrect !== null
-          )
-        },
-        true
-      )
+      if (!this.teamScores) return false
+      return this.teamScores.every(val => val !== null)
+      // return this.$store.state.game.players.reduce(
+      //   (isAnswered, { answers }) => {
+      //     return (
+      //       isAnswered &&
+      //       answers[this.$store.state.game.currentQuestion]?.isCorrect !== null
+      //     )
+      //   },
+      //   true
+      // )
     },
     question() {
       return this.$store.getters.currentQuestion
@@ -100,9 +114,21 @@ export default {
       return this.$store.state.game.inBreakoutRoom
     }
   },
-
-  mounted() {
-    this.socket.emit('fetch')
+  async mounted() {
+    await this.socket.emit('fetch')
+    this.teamScores = new Array(this.teams.length).fill(null)
+  },
+  methods: {
+    recordScore({ id, score }) {
+      this.teamScores.splice(id, 1, score)
+    },
+    saveScores() {
+      console.log('saved')
+      this.teamScores.map(async (score, id) => {
+        await this.socket.emit('scoreAnswer', { score, team: this.teams[id] })
+        // if (id === this.teamScores.length - 1) this.socket.emit('nextQuestion')
+      })
+    }
   }
 }
 </script>

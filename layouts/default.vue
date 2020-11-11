@@ -12,7 +12,7 @@
       <h4 v-if="$store.state.game.breakoutRoomTimer">
         Time left in breakout room: {{ chatCountdown }}
       </h4>
-      <nuxt class="px-4 h-100 pb-5 flex-grow-1" />
+      <nuxt class="px-4 pb-5 flex-grow-1" />
     </div>
   </div>
 </template>
