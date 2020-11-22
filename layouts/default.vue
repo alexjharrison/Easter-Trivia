@@ -1,12 +1,13 @@
 <template>
-  <div id="app" class="text-center d-flex" :class="flexDirection">
+  <div id="app" class="text-center d-flex">
     <iframe
       v-if="isIframeVisible"
       :src="`https://${chatUrlName}/${visibleRoom}`"
-      :style="iframeStyle"
       allow="camera;microphone"
+      width="50%"
+      class="iframe"
     />
-    <div class="mx-auto">
+    <div class="mx-auto game">
       <header-points />
       <h1 class="leafyfont text-center mb-0">Thanksgiving Trivia</h1>
       <h4 v-if="$store.state.game.breakoutRoomTimer">
@@ -22,14 +23,7 @@ import HeaderPoints from '@/components/HeaderPoints'
 export default {
   components: { HeaderPoints },
   data() {
-    return {
-      flexDirection: '',
-      iframeStyle: {
-        // width: '',
-        // height: '',
-        border: 'none'
-      }
-    }
+    return {}
   },
   computed: {
     chatUrlName() {
@@ -61,18 +55,6 @@ export default {
       const seconds = ('0' + (breakoutRoomTimer - minutes * 60)).slice(-2)
       return minutes + ':' + seconds
     }
-  },
-  mounted() {
-    this.setDirection()
-    window.onresize = this.setDirection
-  },
-  methods: {
-    setDirection() {
-      const isRow = window.innerWidth > window.innerHeight
-      this.flexDirection = isRow ? 'flex-row' : 'flex-column'
-      this.iframeStyle.flexBasis = '50vw'
-      this.iframeStyle.height = isRow ? '100vh' : '50vh'
-    }
   }
 }
 </script>
@@ -99,6 +81,17 @@ input {
 .leafyfont {
   font-family: 'leafyfont';
   font-size: 70px;
+}
+
+.iframe {
+  flex-basis: 50%;
+  flex-shrink: 0;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+.game {
+  flex-basis: auto;
 }
 
 #app {

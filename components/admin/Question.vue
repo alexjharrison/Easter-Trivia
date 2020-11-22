@@ -28,7 +28,7 @@
       <b-button class="my-4 mr-2" type="submit"
         >Enter Minutes In Breakout Room</b-button
       >
-      <b-form-input v-model="breakoutRoomTime" type="number" />
+      <b-form-input v-model="breakoutRoomTime" type="number" step="any" />
     </b-form>
     <hr />
     <p>Go to room</p>
