@@ -8,11 +8,11 @@
     />
     <div class="mx-auto">
       <header-points />
-      <h1 class="eggfont text-center mb-0">Not Easter Trivia</h1>
+      <h1 class="leafyfont text-center mb-0">Thanksgiving Trivia</h1>
       <h4 v-if="$store.state.game.breakoutRoomTimer">
         Time left in breakout room: {{ chatCountdown }}
       </h4>
-      <nuxt class="px-4 h-100 pb-5 flex-grow-1" />
+      <nuxt class="px-4 pb-5 flex-grow-1" />
     </div>
   </div>
 </template>
@@ -80,6 +80,10 @@ export default {
   font-family: 'eggfont';
   src: url('/eggfont.ttf');
 }
+@font-face {
+  font-family: 'leafyfont';
+  src: url('/leafyfont.ttf');
+}
 
 input {
   margin-left: auto;
@@ -89,6 +93,10 @@ input {
 .eggfont {
   font-family: 'eggfont';
   font-size: 100px;
+}
+.leafyfont {
+  font-family: 'leafyfont';
+  font-size: 70px;
 }
 
 #app {
