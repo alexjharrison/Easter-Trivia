@@ -2,6 +2,8 @@ const jimp = require('jimp')
 const fs = require('fs-extra')
 
 const processImage = (req, res, next) => {
+  console.log(req.files)
+  if (!req.files) next()
   req.files.map(async file => {
     const newFilepath = file.destination + '/' + file.fieldname + '.png'
     file.newFilepath = '/games/' + req.hash + '/' + file.fieldname + '.png'

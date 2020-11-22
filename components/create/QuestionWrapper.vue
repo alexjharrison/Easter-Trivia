@@ -20,7 +20,6 @@
       :state="Boolean(question.qpic)"
       :value="question.qpic"
       size="sm"
-      required
       class="mb-5"
       @input="$emit('update-pic', { ['qpic' + questionNumber]: $event })"
     />
@@ -31,7 +30,6 @@
       <b-textarea
         :id="i + '-answer-' + answer"
         :value="question.answer"
-        required
         @update="$emit('update', { answers: newAnswers($event, i) })"
       />
     </div>
@@ -40,7 +38,6 @@
       :state="Boolean(question.apic)"
       :value="question.apic"
       size="sm"
-      required
       @input="$emit('update-pic', { ['apic' + questionNumber]: $event })"
     />
   </div>

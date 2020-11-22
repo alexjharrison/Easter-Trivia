@@ -2,7 +2,7 @@
   <div id="app" class="text-center d-flex" :class="flexDirection">
     <iframe
       v-if="isIframeVisible"
-      :src="`https://eastertrivia.daily.co/${visibleRoom}`"
+      :src="`https://${chatUrlName}/${visibleRoom}`"
       :style="iframeStyle"
       allow="camera;microphone"
     />
@@ -25,14 +25,16 @@ export default {
     return {
       flexDirection: '',
       iframeStyle: {
-        width: '',
-        height: '',
-        border: 'none',
-        maxWidth: '630ox'
+        // width: '',
+        // height: '',
+        border: 'none'
       }
     }
   },
   computed: {
+    chatUrlName() {
+      return this.$store.state.chatUrlName
+    },
     room() {
       if (
         !this.$store.state.game ||
@@ -68,7 +70,7 @@ export default {
     setDirection() {
       const isRow = window.innerWidth > window.innerHeight
       this.flexDirection = isRow ? 'flex-row' : 'flex-column'
-      this.iframeStyle.width = isRow ? '50vw' : '100vh'
+      this.iframeStyle.flexBasis = '50vw'
       this.iframeStyle.height = isRow ? '100vh' : '50vh'
     }
   }
@@ -129,6 +131,6 @@ input {
       rgba(86, 86, 86, 0.04) 50%,
       rgba(86, 86, 86, 0.04) 100%
     ),
-    linear-gradient(90deg, rgb(210, 9, 198), rgb(25, 38, 118));
+    linear-gradient(90deg, rgb(94, 45, 6), rgb(190, 115, 2));
 }
 </style>

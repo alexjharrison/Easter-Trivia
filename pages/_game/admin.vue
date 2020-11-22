@@ -12,6 +12,13 @@
       @click="socket.emit('toggleVideoChat')"
       >toggle chat</b-button
     >
+    <b-button
+      class="mt-5 ml-3"
+      size="sm"
+      variant="primary"
+      @click="$store.commit('TOGGLE_CHAT_URL')"
+      >{{ chatUrlName }}</b-button
+    >
   </div>
 </template>
 
@@ -28,8 +35,15 @@ export default {
     GameOver
   },
   async asyncData({ store, $axios, params }) {
-    const { questions } = await $axios.$get('/api/templates/' + params.game)
+    const { questions } = await $axios.$get(
+      'https://trivia.aharrison.xyz/api/templates/' + params.game
+    )
     store.commit('SET_QUESTIONS', questions)
+  },
+  computed: {
+    chatUrlName() {
+      return this.$store.state.chatUrlName
+    }
   }
 }
 </script>

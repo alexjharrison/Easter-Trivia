@@ -23,7 +23,9 @@ import Answered from '@/components/players/Answered'
 export default {
   components: { SetName, Lobby, Question, Answer, Answered, GameOver },
   async asyncData({ store, $axios, params }) {
-    const { questions } = await $axios.$get('/api/templates/' + params.game)
+    const { questions } = await $axios.$get(
+      'https://trivia.aharrison.xyz/api/templates/' + params.game
+    )
     store.commit('SET_QUESTIONS', questions)
   },
   computed: {

@@ -5,7 +5,8 @@ export const state = () => ({
   game: {},
   isAdmin: false,
   adminRoom: null,
-  questions: null
+  questions: null,
+  chatUrlName: 'eastertrivia-dev.daily.co'
 })
 
 export const getters = {
@@ -46,6 +47,11 @@ function getScores(answers) {
 }
 
 export const mutations = {
+  TOGGLE_CHAT_URL(state) {
+    if (state.chatUrlName === 'eastertrivia.daily.co')
+      state.chatUrlName = 'eastertrivia-dev.daily.co'
+    else state.chatUrlName = 'eastertrivia.daily.co'
+  },
   SET_QUESTIONS(state, questions) {
     state.questions = [...questions]
   },

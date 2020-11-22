@@ -19,9 +19,7 @@
         "
         @update-pic="formData.images = { ...formData.images, ...$event }"
       ></question-wrapper>
-      <b-button class="mt-4" type="submit" @click="handleSubmit"
-        >Save Question List</b-button
-      >
+      <b-button class="mt-4" type="submit">Save Question List</b-button>
     </b-form>
   </div>
 </template>
@@ -64,7 +62,9 @@ export default {
     },
     handleSubmit() {
       const data = this.createFormData()
-      this.$axios.$post('/api/templates', data)
+      this.$axios
+        .$post('https://trivia.aharrison.xyz/api/templates', data)
+        .then(() => this.$router.push('/'))
     }
   }
 }

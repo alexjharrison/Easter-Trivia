@@ -17,7 +17,9 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    const templates = await $axios.$get('/api/templates')
+    const templates = await $axios.$get(
+      'https://trivia.aharrison.xyz/api/templates'
+    )
     return { templates }
   }
 }
