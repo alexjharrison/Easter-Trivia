@@ -1,11 +1,13 @@
 <template>
   <div>
     <b-img width="200px" src="~assets/images/buns.png" alt="buns" />
-    <h1>Choose a Team Name</h1>
-    <b-form @submit.prevent="login">
-      <b-input v-model.trim="name" required class="w-auto mb-4" />
-      <b-button type="submit" variant="primary">Let's Play!</b-button>
-    </b-form>
+    <div v-if="!hasStarted">
+      <h1>Choose a Team Name</h1>
+      <b-form @submit.prevent="login">
+        <b-input v-model.trim="name" required class="w-auto mb-4" />
+        <b-button type="submit" variant="primary">Let's Play!</b-button>
+      </b-form>
+    </div>
     <div
       v-if="
         $store.getters.formattedTeams &&
@@ -36,12 +38,14 @@ export default {
   computed: {
     teamNames() {
       return this.$store.getters.formattedTeams.map(team => team.name)
+    },
+    hasStarted() {
+      return this.$store.state.game.hasStarted
     }
   },
   mounted() {
     const name = window.localStorage.getItem('name')
     setTimeout(() => {
-      console.log(this.$store.state.game)
       if (name && this.$store.state.game.hasStarted) {
         this.$store.commit('SET_TEAM_NAME', name)
       }
