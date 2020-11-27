@@ -5,8 +5,7 @@ export const state = () => ({
   game: {},
   isAdmin: false,
   adminRoom: null,
-  questions: null,
-  chatUrlName: 'eastertrivia-dev.daily.co'
+  questions: null
 })
 
 export const getters = {

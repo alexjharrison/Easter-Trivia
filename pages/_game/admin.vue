@@ -16,7 +16,7 @@
       class="mt-5 ml-3"
       size="sm"
       variant="primary"
-      @click="$store.commit('TOGGLE_CHAT_URL')"
+      @click="socket.emit('toggleChatUrl')"
       >{{ chatUrlName }}</b-button
     >
   </div>

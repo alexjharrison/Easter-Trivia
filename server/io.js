@@ -77,6 +77,13 @@ module.exports = io => {
       io.emit('update', gameData)
     })
 
+    socket.on('toggleChatUrl', () => {
+      if (gameData.chatUrlName === 'eastertrivia.daily.co')
+        gameData.chatUrlName = 'eastertrivia-dev.daily.co'
+      else gameData.chatUrlName = 'eastertrivia.daily.co'
+      io.emit('update', gameData)
+    })
+
     socket.on('endGame', () => {
       gameData.hasEnded = true
       io.emit('update', gameData)
@@ -92,6 +99,7 @@ module.exports = io => {
         inBreakoutRoom: false,
         isShowingVideoChat: false,
         breakoutRoomTimer: null,
+        chatUrlName: 'eastertrivia.daily.co',
         song: {
           currentSong: null,
           isPlaying: false
@@ -116,6 +124,7 @@ let gameData = {
   inBreakoutRoom: false,
   isShowingVideoChat: false,
   breakoutRoomTimer: null,
+  chatUrlName: 'eastertrivia.daily.co',
   song: {
     currentSong: null,
     isPlaying: false
