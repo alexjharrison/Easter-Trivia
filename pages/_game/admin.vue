@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     chatUrlName() {
-      return this.$store.state.chatUrlName
+      return this.$store.state.game.chatUrlName
     }
   }
 }
